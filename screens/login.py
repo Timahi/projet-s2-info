@@ -1,13 +1,16 @@
 from services.files_parser import IdentFile
 
 
-def login_screen():
+def login_screen() -> dict:
     print("🏦 Bienvenue dans votre application de Gestion Bancaire ! 🏦")
     print("Veuillez vous identifier...")
     print()
 
     user_id = input("🆔 Identifiant : ")
     user_password = input("🔑 Mot de passe : ")
+
+    # user_id = "23456789"
+    # user_password = "104598"
 
     if not user_id or not user_password:
         print("❌ Veuillez remplir tous les champs ! ❌")
@@ -21,13 +24,14 @@ def login_screen():
         print("❌ Le mot de passe doit contenir 6 chiffres ! ❌")
         return login_screen()
 
-    ident = IdentFile("ident.txt")
+    ident = IdentFile()
     users = ident.get_users()
 
     user = users.find_by_id(user_id)
 
     if user and user["password"] == user_password:
         print(f"🎉 Bienvenue {user['name']} ! 🎉")
+        return user
     else:
         print("❌ Identifiant ou mot de passe incorrect ! ❌")
         login_screen()
