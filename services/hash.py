@@ -27,7 +27,7 @@ class HashModule:
                 case "number":
                     if ascii_code - self._key >= 48:
                         resolved_string += chr(ascii_code - self._key)
-                    elif ascii_code - self._key < 48:
+                    else:
                         while ascii_code - self._key < 48:
                             ascii_code += 10
                         resolved_string += chr(ascii_code - self._key)
@@ -35,7 +35,7 @@ class HashModule:
                 case "uppercase":
                     if ascii_code - self._key >= 65:
                         resolved_string += chr(ascii_code - self._key)
-                    elif ascii_code - self._key < 65:
+                    else:
                         while ascii_code - self._key < 65:
                             ascii_code += 26
                         resolved_string += chr(ascii_code - self._key)
@@ -43,7 +43,7 @@ class HashModule:
                 case "lowercase":
                     if ascii_code - self._key >= 97:
                         resolved_string += chr(ascii_code - self._key)
-                    elif ascii_code - self._key < 97:
+                    else:
                         while ascii_code - self._key < 97:
                             ascii_code += 26
                         resolved_string += chr(ascii_code - self._key)
